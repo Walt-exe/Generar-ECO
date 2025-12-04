@@ -1,0 +1,532 @@
+<!DOCTYPE html>                                                                        
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal | Reserva Natural y Movimiento Ambiental</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables de color */
+        :root {
+            --color-green-dark: #38761d;
+            --color-green-light: #52b12f;
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-background-light: #f4f4f4;
+            --color-footer-text: #666;
+            --color-section-bg: #fff;
+            --color-button-yellow: #a2b12f; /* Tono verde/amarillo del botón en esta página */
+        }
+
+        /* Base / Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-section-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- ESTILOS GENERALES (HEADER Y FOOTER) --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--color-section-bg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav {
+            flex-grow: 1; /* Permite que el nav se expanda */
+            text-align: center;
+        }
+
+        .nav a {
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-dark);
+        }
+        
+        .header-actions {
+            flex-shrink: 0;
+        }
+
+        .btn-company {
+            background-color: var(--color-green-light);
+            color: var(--color-text-light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            padding: 20px 5%;
+            background-color: var(--color-section-bg);
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-logo p {
+            color: var(--color-footer-text);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .footer-nav a {
+            margin-left: 20px;
+            color: var(--color-footer-text);
+            font-weight: 600;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* --- SECCIÓN PRINCIPAL: RESERVA NATURAL --- */
+
+        .hero-banner {
+            max-width: 1200px;
+            margin: 20px auto;
+            position: relative;
+            border-radius: 10px; /* Bordes redondeados sutiles */
+            overflow: hidden;
+            height: 450px; /* Altura del banner */
+            background-image: url('banner-reserva-bg.png'); /* Reemplazar con la imagen */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.1) 80%);
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: var(--color-text-light);
+        }
+
+        .hero-content h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .btn-yellow {
+            background-color: var(--color-button-yellow);
+            color: var(--color-text-light);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* --- SECCIÓN 2: ONG AMBIENTAL (Texto y Contadores) --- */
+
+        .ong-section {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 5%;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .ong-text {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .ong-text h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin-bottom: 15px;
+        }
+
+        .ong-text p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .ong-counters {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-image: url('bg-counters.png'); /* Imagen de fondo para los contadores */
+            background-size: cover;
+            background-position: center;
+            padding: 30px;
+            border-radius: 10px;
+            color: var(--color-text-light);
+            position: relative;
+        }
+        
+        .ong-counters::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.35); /* Capa de opacidad oscura */
+            border-radius: 10px;
+        }
+
+        .counter-item {
+            position: relative;
+            z-index: 10;
+        }
+
+        .counter-item h3 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--color-button-yellow);
+            line-height: 1;
+        }
+
+        .counter-item p {
+            font-size: 1em;
+            font-weight: 400;
+            margin-top: 5px;
+            color: var(--color-text-light);
+        }
+
+        /* --- SECCIÓN 3: ICONOS DE PARTICIPACIÓN --- */
+        .icon-grid-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .icon-card {
+            background-color: var(--color-green-dark);
+            color: var(--color-text-light);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .icon-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--color-button-yellow);
+        }
+
+        .icon-card h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .icon-card a {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--color-button-yellow);
+            border-bottom: 2px solid var(--color-button-yellow);
+            padding-bottom: 2px;
+        }
+
+        /* --- SECCIÓN 4: QR (Espacio para actuar) --- */
+        .qr-section {
+            display: flex;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 5%;
+            gap: 60px;
+            align-items: center;
+            background-color: var(--color-background-light);
+            padding: 40px 5%;
+            border-radius: 10px;
+        }
+
+        .qr-image {
+            flex-shrink: 0;
+            width: 180px;
+            height: 180px;
+        }
+
+        .qr-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-text {
+            flex: 1;
+        }
+
+        .qr-text h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin-bottom: 10px;
+        }
+
+        .qr-text p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* --- SECCIÓN 5: Formá Parte (CTA Final) --- */
+        .cta-final-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .cta-final-section h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin-bottom: 15px;
+        }
+
+        .cta-final-section p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        /* --- Media Queries (Responsivo) --- */
+        @media (max-width: 1024px) {
+            .ong-section {
+                flex-direction: column;
+            }
+            .ong-counters {
+                width: 100%;
+            }
+            .icon-grid-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav {
+                flex-basis: 100%;
+                margin: 10px 0;
+            }
+            .nav a {
+                margin: 0 8px;
+            }
+            .hero-content h2 {
+                font-size: 1.8em;
+            }
+            .icon-grid-section {
+                grid-template-columns: 1fr;
+            }
+            .qr-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .qr-text h2, .cta-final-section h2 {
+                font-size: 1.6em;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-nav {
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logo-sembrar-eco.png" alt="Logo ECO" height="40"> </div>
+        <nav class="nav">
+    <a href="#" class="nav-active" >Inicio</a>
+    <a href="index-contacto.html">Contacto</a>
+    <a href="index-programas.html">Programas</a>
+    <a href="index-dona.html">Dona</a>
+    <a href="index-app.html">App</a>
+    <a href="index-sumate.html">Sumate</a> 
+    <a href="index-quienes-somos.html">Quienes Somos</a>
+
+</nav>
+        <div class="header-actions">
+            <a href="#" class="btn-company">Soy empresa »</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-banner" style="background-image: url('Screenshot 2025-12-03 153432-banner.png');"> 
+            <div class="hero-banner-overlay">
+                <div class="hero-content">
+                    <h2>RESERVA NATURAL "DON SILVESTRE"</h2>
+                    <p>Protegemos un espacio vital para la biodiversidad en Misiones, promoviendo reforestación nativa, educación ambiental y ecoturismo sostenible para regenerar la salud del Pernambucano.</p>
+                    <a href="#" class="btn-yellow">Descubrir la reserva »</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="ong-section">
+            <div class="ong-text">
+                <h2>Una ONG ambiental que trabaja por la restauración de la vida</h2>
+                <p>Nuestra misión es regenerar ecosistemas, promover la educación ambiental y activar el compromiso social para la protección de la naturaleza y la biodiversidad.</p>
+                <a href="#" class="btn-yellow">Conocénos »</a>
+            </div>
+            
+            <div class="ong-counters" style="background-image: url('bg-counters.png');"> 
+                <div class="counter-item">
+                    <h3>+5000</h3>
+                    <p>ÁRBOLES PLANTADOS</p>
+                </div>
+                <div class="counter-item">
+                    <h3>+40</h3>
+                    <p>PROYECTOS EJECUTADOS</p>
+                </div>
+                <div class="counter-item">
+                    <h3>+450</h3>
+                    <p>PERSONAS VOLUNTARIAS</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="icon-grid-section">
+            <div class="icon-card">
+                <div class="icon"><i class="fas fa-user-friends"></i></div>
+                <h4>Sé parte del movimiento ambiental</h4>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="icon-card">
+                <div class="icon"><i class="fas fa-tree"></i></div>
+                <h4>Reforestación y gestión sostenible</h4>
+                <a href="#">Más información</a>
+            </div>
+            <div class="icon-card">
+                <div class="icon"><i class="fas fa-recycle"></i></div>
+                <h4>Innovación tecnológica ecológica</h4>
+                <a href="#">Conocer proyectos</a>
+            </div>
+            <div class="icon-card">
+                <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h4>Apoyo económico y voluntariado</h4>
+                <a href="#">Quiero colaborar</a>
+            </div>
+        </section>
+        
+        <section class="qr-section">
+            <div class="qr-image">
+                <img src="qr-code-small.png" alt="Código QR de la app"> </div>
+            <div class="qr-text">
+                <h2>Tu espacio para actuar y cuidar el ambiente</h2>
+                <p>La App de Generar Eco transforma tus pasos en acciones reales: te permite participar en proyectos sostenibles para sumar desde donde quieras que estés.</p>
+                <a href="#" class="btn-yellow">Descargá la app »</a>
+            </div>
+        </section>
+
+        <section class="cta-final-section">
+            <h2>Formá parte del movimiento regenerativo</h2>
+            <p>Podés participar como voluntario, asociado, colaborar con proyectos de reforestación, o simplemente donar. Hay muchas formas de ser parte y sumar a la causa.</p>
+            <a href="#" class="btn-yellow">¡Súmate al movimiento! »</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo-sembrar-eco-small.png" alt="Logo ECO pequeño" height="25">
+                <p>© Área. 2025</p>
+            </div>
+           <nav class="footer-nav">
+    <a href="index-inicio.html">Inicio</a>
+    <a href="index-contacto.html">Contacto</a>
+    <a href="index-programas.html">Programas</a>
+    <a href="index-dona.html">Dona</a>
+    <a href="index-app.html">App</a>
+    <a href="index-sumate.html">Súmate</a>
+    <a href="index-quienes-somos.html">Quienes Somos</a>
+</nav>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-info-reserved">All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Script básico para confirmar la carga y manejar clics
+            console.log('Página cargada y lista.');
+
+            // Ejemplo para todos los botones que usan la clase .btn-yellow
+            const yellowButtons = document.querySelectorAll('.btn-yellow');
+            yellowButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log(`Botón clickeado: ${button.textContent}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

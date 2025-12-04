@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Generar ECO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables de color */
+        :root {
+            --color-green-dark: #38761d;
+            --color-green-medium: #558b2f; /* Usado para el fondo grande */
+            --color-green-light: #52b12f;
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-background-light: #f4f4f4;
+            --color-footer-text: #666;
+            --color-section-bg: #fff;
+            --color-button-yellow: #a2b12f;
+        }
+
+        /* Base / Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-section-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- ESTILOS GENERALES (HEADER Y FOOTER) --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--color-section-bg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .nav a {
+            margin: 0 15px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-dark);
+        }
+        
+        .header-actions {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-green-light); /* Fondo del botón de empresa */
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-light);
+        }
+        
+        .header-actions a {
+            color: var(--color-text-light);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            padding: 20px 5%;
+            background-color: var(--color-section-bg);
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-logo span {
+            color: var(--color-footer-text);
+            font-size: 13px;
+        }
+
+        .footer-nav a {
+            margin-left: 20px;
+            color: var(--color-footer-text);
+            font-weight: 600;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .footer-reserved {
+            color: var(--color-footer-text);
+            font-size: 12px;
+        }
+
+        /* --- SECCIÓN PRINCIPAL: FORMULARIO Y CONTACTO --- */
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5%;
+            position: relative;
+        }
+
+        .form-section {
+            display: flex;
+            gap: 40px;
+            background-color: var(--color-section-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 50px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .form-info {
+            flex: 1;
+        }
+
+        .form-info h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--color-green-light);
+            margin-bottom: 20px;
+        }
+
+        .form-image-container {
+            width: 100%;
+            padding-top: 100%; /* Para hacerlo cuadrado */
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .form-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 1em;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f9f9f9;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .btn-submit {
+            background-color: var(--color-button-yellow);
+            color: var(--color-text-light);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-end; /* Botón a la derecha */
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #92a11f;
+        }
+
+        /* --- SECCIÓN 2: OFICINAS Y FONDO CURVO --- */
+        .offices-bg-wrapper {
+            position: absolute;
+            top: 50%; /* Inicia el fondo verde más abajo */
+            left: 0;
+            width: 100%;
+            background-color: var(--color-green-medium);
+            padding-top: 300px; /* Espacio para el formulario que se superpone */
+            padding-bottom: 50px;
+            color: var(--color-text-light);
+            clip-path: ellipse(120% 100% at 50% 100%); /* Forma el borde curvo inferior */
+            z-index: 1;
+        }
+        
+        .offices-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0 5%;
+            text-align: center;
+            padding-top: 100px; /* Baja el contenido de las oficinas */
+        }
+
+        .office-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .office-item h3 {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text-light);
+        }
+
+        .office-item p {
+            font-size: 1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: var(--color-text-light);
+        }
+
+        .office-item i {
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: var(--color-button-yellow);
+        }
+
+        /* --- Media Queries (Responsivo) --- */
+        @media (max-width: 1024px) {
+            .form-section {
+                flex-direction: column;
+                padding: 30px;
+            }
+            .offices-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .offices-bg-wrapper {
+                top: 40%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav {
+                flex-basis: 100%;
+                margin: 10px 0;
+            }
+            .nav a {
+                margin: 0 8px;
+            }
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .offices-bg-wrapper {
+                top: 30%; /* Empuja el fondo verde más abajo en móviles */
+                padding-top: 400px;
+            }
+            .contact-container {
+                padding: 20px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logo-sembrar-eco.png" alt="Logo Generar ECO" height="40">
+        </div>
+        <nav class="nav">
+    <a href="index-inicio.html">Inicio</a>
+    <a href="#" class="nav-active" >Contacto</a>
+    <a href="index-programas.html">Programas</a>
+    <a href="index-dona.html">Dona</a>
+    <a href="index-app.html">App</a>
+    <a href="index-sumate.html">Súmate</a>
+    <a href="index-quienes-somos.html">Quienes Somos</a>
+        </nav>
+        <div class="header-actions">
+            <a href="#">Soy empresa »</a>
+        </div>
+    </header>
+
+    <div class="offices-bg-wrapper">
+        <div class="offices-container">
+            <div class="office-item">
+                <h3>Oficina 1</h3>
+                <p><i class="fas fa-phone"></i> +447473997191</p>
+                <p><i class="fas fa-envelope"></i> sybexdesigns@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 2068 Boulevard Henri -Bourassa Est</p>
+            </div>
+            <div class="office-item">
+                <h3>Oficina 2</h3>
+                <p><i class="fas fa-phone"></i> +447473997191</p>
+                <p><i class="fas fa-envelope"></i> sybexdesigns@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 2068 Boulevard Henri -Bourassa Est</p>
+            </div>
+            <div class="office-item">
+                <h3>Oficina 3</h3>
+                <p><i class="fas fa-phone"></i> +447473997191</p>
+                <p><i class="fas fa-envelope"></i> sybexdesigns@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 2068 Boulevard Henri -Bourassa Est</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="contact-container">
+        <section class="form-section">
+            <div class="form-info">
+                <h1>Completá tus datos y te respondemos a la brevedad</h1>
+                <div class="form-image-container">
+                    <img src="deer.png" alt="Imagen de un pequeño animal" class="form-image">
+                </div>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="organizacion">Organización (Opcional):</label>
+                    <input type="text" id="organizacion" name="organizacion">
+                </div>
+                
+                <div class="form-group">
+                    <label for="motivo">Motivo de contacto (HACER LISTADO):</label>
+                    <input type="text" id="motivo" name="motivo" required> 
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Enviar »</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo-sembrar-eco-small.png" alt="Logo ECO pequeño" height="25">
+                <span>© Área. 2025</span>
+            </div>
+            <nav class="footer-nav">
+    <a href="index-inicio.html">Inicio</a>
+    <a href="index-contacto.html">Contacto</a>
+    <a href="index-programas.html">Programas</a>
+    <a href="index-dona.html">Dona</a>
+    <a href="index-app.html">App</a>
+    <a href="index-sumate.html">Súmate</a>
+    <a href="index-quienes-somos.html">Quienes Somos</a>
+            </nav>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-reserved">All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // En un entorno de producción, aquí se enviaría la data a un servidor (fetch API).
+                
+                console.log('Formulario enviado con éxito!');
+                
+                // Ejemplo de lo que se podría hacer:
+                const formData = new FormData(form);
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                
+                alert('¡Gracias! Tu mensaje ha sido enviado. Te responderemos a la brevedad.');
+                form.reset(); // Limpia el formulario
+            });
+        });
+    </script>
+</body>
+</html>
