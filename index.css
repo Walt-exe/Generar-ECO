@@ -115,7 +115,7 @@
 .stats-section {
     position: relative;
     width: 100%;
-    height: 650px; /* Ajustar según Figma */
+    height: auto; /* Ajustar según Figma */
     overflow: hidden;
 }
 
@@ -2019,3 +2019,343 @@ main {
         font-size: 2em;
     }
 }
+<<<<<<< Updated upstream
+=======
+
+
+/*-------------------------css sumate----------------------------*/
+
+        /* Variables de color (ajustar según los tonos exactos) */
+        :root {
+            --color-green-dark: #38761d;
+            --color-green-light: #52b12f;
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --color-background-light: #f4f4f4;
+            --color-footer-text: #666;
+        }
+
+        /* Base / Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            background-color: var(--color-text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 1. Header/Navbar */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--color-text-light);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            height: 40px; /* Ajustar el tamaño del logo */
+        }
+
+        .nav a {
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--color-text-dark);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            font-size: 12px;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+
+        .language-selector .lang-active {
+            color: var(--color-green-dark);
+        }
+
+        .language-selector .separator {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        .btn-company {
+            background-color: var(--color-green-light);
+            color: var(--color-text-light);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        /* 2. Hero Section */
+        .hero-section {
+            position: relative;
+            height: 60vh; /* Altura del banner, ajustar si es necesario */
+            /* Reemplazar con el path de tu imagen de fondo */
+            background-image: url('Screenshot 2025-12-03 141425-bg.png'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-content-overlay {
+            background-color: rgba(0, 0, 0, 0.3); /* Overlay oscuro para mejor legibilidad */
+            width: 100%;
+            padding: 40px 5%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: var(--color-text-light);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            background-color: var(--color-green-light);
+            color: var(--color-text-light);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+
+        /* 3. Participation Section */
+        .participation-section {
+            padding: 50px 5%;
+            background-color: var(--color-background-light);
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            margin-bottom: 30px;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--color-green-dark);
+            color: var(--color-text-light);
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: left;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .card h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .card-icon {
+            font-size: 3em;
+            align-self: flex-start;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card-icon .card-plus {
+            font-size: 0.5em;
+            position: absolute;
+            bottom: -5px;
+            right: -10px;
+        }
+
+        /* Estilo específico para la tarjeta de Donación */
+        .card-donacion {
+            background-color: #558b2f;
+        }
+
+        .card-icon-small {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: #52b12f;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text-light);
+        }
+
+        .card-link {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            align-self: flex-start;
+        }
+
+
+        /* 4. Footer */
+        .footer {
+            padding: 20px 5%;
+            background-color: var(--color-text-light);
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-logo img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .footer-logo p {
+            color: var(--color-footer-text);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .footer-nav a {
+            margin-left: 20px;
+            color: var(--color-footer-text);
+            font-weight: 600;
+        }
+
+        .footer-info {
+            display: flex;
+            color: var(--color-footer-text);
+            font-size: 12px;
+        }
+
+        .footer-info p:first-child {
+            margin-right: 20px;
+        }
+
+        .social-links a {
+            margin-left: 15px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .social-links a:hover {
+            color: var(--color-green-light);
+        }
+
+
+        /* Media Queries para diseño responsivo */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+            .nav {
+                margin: 10px 0;
+            }
+            .nav a {
+                margin: 0 10px;
+            }
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+                max-width: 350px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-logo, .footer-nav, .social-links, .footer-info {
+                margin-bottom: 15px;
+            }
+            .footer-nav a {
+                margin: 0 10px;
+            }
+        }
+    
+
+        /*-------------------------------seccion responsive-----------------------------------*/
+
+    
+/* Media Query para pantallas pequeñas (tablets y móviles) */
+@media (max-width: 992px) {
+    
+    /* 1. Resetear el posicionamiento problemático */
+    .stats-section {
+        height: auto; /* Dejar que la sección crezca verticalmente */
+    }
+
+    /* 2. Devolver las tarjetas al flujo normal */
+    .stats-cards {
+        position: static; /* Las devuelve al flujo normal de la página */
+        top: auto;
+        right: auto;
+        transform: none;
+        display: flex;
+        flex-direction: column; /* Apila las tarjetas verticalmente */
+        align-items: center; /* Las centra */
+        padding: 50px 0;
+        width: 100%;
+    }
+
+    /* 3. Ajustar el ancho de las tarjetas */
+    .stats-card {
+        width: 90%; /* Ocupa el 90% del espacio disponible */
+        max-width: 400px; /* Evita que crezca demasiado en pantallas grandes de tablets */
+    }
+    
+    /* 4. Arreglar la sección "Nosotros" para que se apilen */
+    .about-section {
+        flex-direction: column; /* Pone los elementos en columna */
+        padding: 40px 20px;
+    }
+}
+>>>>>>> Stashed changes
