@@ -16,14 +16,34 @@
     background-color: #bada55;
     color: white;
     border: none;
-    padding: 20px 25px;
-    border-radius: 20px;
+    padding: 15px 35px;
+    padding-right: 60px;
+    border-radius: 30px;
     font-weight: 900;
     cursor: pointer;
+    position: relative;
+    white-space: nowrap; 
+    
 }
 
 .btn-carousel:hover {
     background-color: #a1c54b;
+}
+
+/* ← AGREGAR ESTO DESPUÉS del hover */
+.btn-carousel::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-carousel:hover::after {
+    right: 15px;
+    transform: translateY(-50%) translateX(3px);
 }
 
 /* Título del carrusel */
@@ -2907,6 +2927,123 @@ main {
 .stats-card h4 {
     color: #4F7F2B;
 }
+/* ========== CARDS PROGRAMAS - ALINEADAS ========== */
+
+.card-programa {
+    background: linear-gradient(180deg, #7FB033 0%, #4F7F2B 100%);
+    border: none;
+    border-radius: 24px;
+    padding: 35px 25px;
+    text-align: center;
+    height: 100%; /* ← CAMBIADO: de min-height a height */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(79, 127, 43, 0.2);
+}
+
+.card-programa:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(79, 127, 43, 0.4);
+}
+
+/* Contenedor del ícono */
+.card-icon-wrapper {
+    margin-bottom: 25px;
+    height: 70px; /* ← NUEVO: altura fija */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon-wrapper img {
+    width: 70px;
+    height: 70px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.card-programa:hover .card-icon-wrapper img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Body de la card */
+.card-programa .card-body {
+    padding: 0; /* ← NUEVO */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* ← NUEVO: crece para ocupar espacio */
+}
+
+/* Texto de la card */
+.card-programa .card-text {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: auto; /* ← NUEVO: empuja el botón abajo */
+    min-height: 72px; /* ← NUEVO: altura mínima consistente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón con borde blanco */
+.btn-card-outline { /* ← CAMBIADO: de .card-programa .btn a .btn-card-outline */
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px; /* ← NUEVO: espacio consistente */
+    align-self: center;
+}
+
+.btn-card-outline:hover { /* ← CAMBIADO */
+    background: white;
+    color: #4F7F2B;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+/* Asegurar que todas las columnas tengan la misma altura */
+.row-equal-height {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row-equal-height > [class*='col-'] {
+    display: flex;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .card-programa .card-text {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-icon-wrapper {
+        height: 60px;
+    }
+    
+    .card-icon-wrapper img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .card-programa .card-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* ========== FIN CARDS PROGRAMAS ========== */
 
 /* ========== 4. MEJORAS CARDS VERDES (4 TARJETAS) ========== */
 
