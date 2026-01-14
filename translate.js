@@ -81,6 +81,8 @@ const lang = {
     "footer.prog": "Programas",
     "footer.dona": "Doná",
     "footer.app": "App",
+    "footer.contact":"Contacto",
+    "footer.volunteer":"Voluntariado",
     "footer.rights": "All Rights Reserved"
   },
   
@@ -165,6 +167,8 @@ const lang = {
     "footer.prog": "Programs",
     "footer.dona": "Donate",
     "footer.app": "App",
+    "footer.contact":"Contact",
+    "footer.volunteer":"Volunteering",
     "footer.rights": "All Rights Reserved"
   }
 };

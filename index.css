@@ -442,14 +442,6 @@
     color: white;
 }
 
-/* ========== FOOTER MEJORADO ========== */
-/* ========== FOOTER MEJORADO ========== */
-/* ELIMINAR CUALQUIER MARGEN EXTRAÑO */
-body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
 
 /* ========== FOOTER MEJORADO ========== */
 /* ELIMINAR CUALQUIER MARGEN EXTRAÑO */
@@ -459,52 +451,103 @@ body, html {
     overflow-x: hidden;
 }
 
-/* EL FOOTER GRIS AL 100% */
+/* ========== FOOTER REDISEÑADO ========== */
+
 .custom-footer {
     background-color: #f8f9fa !important; 
     width: 100vw;
-    padding: 25px 0;
+    padding: 30px 0;
     color: #333 !important;
     border-top: 1px solid #e0e0e0;
 }
 
-/* CONTENEDOR INTERNO CENTRADO */
 .footer-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* ← CAMBIADO: centra verticalmente */
     padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px 40px;
+    align-items: start;
 }
 
-.footer-box {
-    flex: 1;
-}
-.footer-brand { 
-    flex: 1;
-}
-
-/* COLUMNA LOGO */
+/* Logo y descripción - primera fila, primera columna */
 .footer-brand {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* ← NUEVO: centra el contenido */
     align-items: flex-start;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .footer-logo {
-    width: 100px; /* ← CAMBIADO: de 45px a 100px */
+    width: 60px;
     height: auto;
-    margin-bottom: 10px; /* ← REDUCIDO: de 20px a 10px */
-    display: block;
+    margin-bottom: 12px;
 }
 
 .f-text {
     font-size: 14px;
-    color: #666; /* ← CAMBIADO: era #cccccc */
+    color: #666;
     margin: 0;
-    line-height: 1.3;
+    line-height: 1.4;
+}
+
+/* Navegación - segunda fila, primera columna (debajo del logo) */
+.nav-box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-start;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.nav-box a {
+    color: #333 !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-box a:hover {
+    color: #4F7F2B !important;
+}
+
+/* Redes sociales - primera fila, segunda columna */
+.social-box {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons img {
+    width: 28px;
+    height: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icons img:hover {
+    transform: translateY(-3px) scale(1.1);
+    filter: drop-shadow(0 3px 8px rgba(79, 127, 43, 0.4));
+}
+
+/* Copyright - tercera fila, primera columna */
+.footer-bottom-text {
+    grid-column: 1;
+    grid-row: 3;
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
 }
 
 .f-sub {
@@ -513,75 +556,56 @@ body, html {
     margin: 0;
 }
 
-/* COLUMNA NAV (AL CENTRO) */
-.nav-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; /* ← NUEVO: alinea verticalmente los links */
-    gap: 30px;
-    flex: 2;
-}
-
-.nav-box a {
-    color: #333 !important;
-    text-decoration: none !important;
-    font-weight: 600;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-.nav-box a:hover {
-    color: #4F7F2B!important;
-    transform: translateY(-2px);
-}
-
-/* COLUMNA REDES (A LA DERECHA) */
-.social-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center; /* ← NUEVO: centra verticalmente */
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.social-icons img {
-    width: 30px;
-    height: auto;
-    filter: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.social-icons img:hover {
-    transform: translateY(-5px) scale(1.15);
-    filter: drop-shadow(0 5px 10px rgba(79, 127, 43, 0.4));
+/* All Rights Reserved - tercera fila, segunda columna */
+.footer-wrapper::after {
+    content: 'All Rights Reserved';
+    grid-column: 2;
+    grid-row: 3;
+    text-align: right;
+    font-size: 12px;
+    color: #888888;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .footer-wrapper {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 25px;
         text-align: center;
-        gap: 30px;
     }
     
     .footer-brand {
+        grid-column: 1;
+        grid-row: 1;
         align-items: center;
     }
     
+    
+    .social-box {
+        grid-column: 1;
+        grid-row: 2;
+        justify-content: center;
+    }
     .nav-box {
-        flex-direction: column;
+        grid-column: 1;
+        grid-row: 3;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 15px;
     }
     
-    .social-box {
-        align-items: center;
+    .footer-bottom-text {
+        grid-column: 1;
+        grid-row: 4;
+        justify-content: center;
+    }
+    
+    .footer-wrapper::after {
+        grid-column: 1;
+        grid-row: 5;
+        text-align: center;
+        padding-top: 0;
     }
 }
 
@@ -2911,14 +2935,16 @@ main {
 
 /* Altura mejorada del carousel */
 .carousel-wrapper .carousel-item {
-    height: 500px;
+    height: 600px;
 }
 
 .carousel-wrapper .carousel-item img {
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.8);
+    filter: brightness(1.1) contrast(1.05) saturate(1.1);
     transition: all 0.5s ease;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 /* Efecto zoom al cambiar slide */
@@ -3577,42 +3603,9 @@ main {
 }
 
 
-/* ========== MEJORA LEGIBILIDAD CAROUSEL ========== */
 
-/* Overlay oscuro sobre las imágenes del carousel */
-.carousel-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.3) 0%,
-        rgba(0, 0, 0, 0.5) 50%,
-        rgba(0, 0, 0, 0.7) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
 
-/* Asegurar que el texto esté por encima del overlay */
-.carousel-caption {
-    z-index: 10 !important;
-}
 
-/* Mejorar contraste del blur-box */
-.carousel-blur-box {
-    background: rgba(0, 0, 0, 0.4) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px 40px;
-}
 
-/* Mejorar sombra del texto para mejor legibilidad */
-.carousel-blur-box h5,
-.carousel-blur-box p {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-}
+
+
