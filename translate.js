@@ -53,16 +53,16 @@ const lang = {
     
     // CARDS
     "card1.text": "Educación ambiental para escuelas y comunidades",
-    "card1.btn": "Más información",
+    "card1.btn": "Participá",
     
     "card2.text": "Agricultura regenerativa y producción sustentable",
     "card2.btn": "Más información",
     
     "card3.text": "Reforestación con especies nativas y restauración ecológica",
-    "card3.btn": "Conocer proyectos",
+    "card3.btn": "Más información",
     
     "card4.text": "Alianzas sociales y ambientales para organizaciones",
-    "card4.btn": "Quiero colaborar",
+    "card4.btn": "Más información",
     
     // QR
     "qr.title": "Tu espacio para actuar y cuidar el ambiente",
@@ -139,16 +139,16 @@ const lang = {
     
     // CARDS
     "card1.text": "Environmental education for schools and communities",
-    "card1.btn": "More information",
+    "card1.btn": "Join in",
     
     "card2.text": "Regenerative agriculture and sustainable production",
     "card2.btn": "More information",
     
     "card3.text": "Reforestation with native species and ecological restoration",
-    "card3.btn": "View projects",
+    "card3.btn": "More information",
     
     "card4.text": "Social and environmental alliances for organizations",
-    "card4.btn": "I want to collaborate",
+    "card4.btn": "More information",
     
     // QR
     "qr.title": "Your space to act and care for the environment",

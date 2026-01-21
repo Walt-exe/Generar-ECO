@@ -1,19 +1,83 @@
-.carousel-item img{
+/* ========== BLUR ESTÉTICO PARA CAROUSEL ========== */
+
+/* Imagen del carousel */
+.carousel-item img {
     height: 400px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    
-}
-.carousel-wrapper{
-   
-    margin: 0 auto;       /* Centra el carousel */
-    overflow: hidden;     /* Mantiene bordes redondeados */
+    object-fit: cover;
+    width: 100%;
 }
 
-.btn-carousel{
-    margin-top: 50px;
-    background-color: #bada55;
+/* Overlay oscuro sobre la imagen */
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Wrapper del carousel */
+.carousel-wrapper {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Asegurar que el caption esté encima del overlay */
+.carousel-caption {
+    z-index: 10;
+    bottom: 20px !important; /* Mantener el caption visible */
+}
+
+/* Hacer el caption visible en móviles */
+.carousel-caption.d-none.d-md-block {
+    display: block !important; /* Forzar que se muestre en móviles */
+}
+
+/* Mejorar el blur box con glassmorphism */
+.carousel-blur-box {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px 60px;
+    border: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    pointer-events: none; 
+}
+
+/* Mejorar la legibilidad del texto */
+.carousel-blur-box h5 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.carousel-blur-box p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Botón mejorado */
+.btn-carousel {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
     color: white;
     border: none;
     padding: 15px 35px;
@@ -22,15 +86,18 @@
     font-weight: 900;
     cursor: pointer;
     position: relative;
-    white-space: nowrap; 
-    
+    white-space: nowrap;
+    box-shadow: 0 6px 20px rgba(199, 221, 88, 0.4);
+    transition: all 0.3s ease;
+    pointer-events: auto;
 }
 
 .btn-carousel:hover {
-    background-color: #a1c54b;
+    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(199, 221, 88, 0.6);
 }
 
-/* ← AGREGAR ESTO DESPUÉS del hover */
 .btn-carousel::after {
     content: '→';
     position: absolute;
@@ -46,27 +113,277 @@
     transform: translateY(-50%) translateX(3px);
 }
 
-/* Título del carrusel */
-.carousel-blur-box h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
-/* Texto del carrusel */
-.carousel-blur-box p {
-    font-size: 1rem;
-    margin-top: 10px;
-    color: #e8e8e8;
-}
-
+/* Hacer que el caption ocupe más ancho */
 .carousel-caption {
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%);
-    width: 100%; /* Para que el blur pueda expandirse */
-    bottom: -0,9%; 
+    left: 5% !important;
+    right: 5% !important;
+    width: auto !important;
 }
+
+
+
+
+/* ========== ESTILOS MEJORADOS PARA MÓVIL ========== */
+
+/* Mejoras para tablets y móviles grandes (768px) */
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 992px) {
+    .carousel-blur-box {
+        padding: 25px 60px;
+        max-width: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    
+    .carousel-blur-box h5 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: 800;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    
+    .carousel-blur-box p {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 12px;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    .btn-carousel {
+        padding: 12px 28px;
+        padding-right: 52px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+    
+    .carousel-caption {
+        bottom: 40px !important;
+    }
+}
+@media (max-width: 768px) {
+    
+    /* Blur box con mejor glassmorphism */
+    .carousel-blur-box {
+        padding: 10px 20px;
+        border-radius: 15px;
+        max-width: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75); /* Fondo más oscuro y sólido */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        
+    }
+
+    /* Título más destacado */
+    .carousel-blur-box h5 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        font-weight: 800;
+        color: #ffffff;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        letter-spacing: 0.3px;
+    }
+
+    /* Texto más legible */
+    .carousel-blur-box p {
+        font-size: 0.72rem;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        font-weight: 400;
+    }
+
+    /* Botón más compacto y atractivo */
+    .btn-carousel {
+        padding: 10px 24px;
+        padding-right: 48px;
+        font-size: 0.8rem;
+        margin-top: 10px;
+        font-weight: 700;
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(199, 221, 88, 0.5);
+        
+    }
+
+    .carousel-caption {
+        top: 50% !important;
+        bottom: auto !important;
+        transform: translateY(-50%);
+    }
+}
+
+
+
+/* Mejoras para móviles pequeños (576px) */
+@media (max-width: 576px) {
+    
+    /* Blur box ultra compacto */
+    .carousel-blur-box {
+        padding: 8px 16px;
+        border-radius: 20px;
+        max-width: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75); /* Más opaco */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Título compacto pero legible */
+    .carousel-blur-box h5 {
+        font-size: 0.98rem;
+        line-height: 1.2;
+        margin-bottom: 6px;
+        font-weight: 800;
+        color: #ffffff;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+        letter-spacing: 0.2px;
+    }
+
+    /* Texto ajustado */
+    .carousel-blur-box p {
+        font-size: 0.67rem;
+        line-height: 1.3;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.98);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        font-weight: 400;
+    }
+
+    /* Botón pequeño pero visible */
+    .btn-carousel {
+        padding: 9px 20px;
+        padding-right: 42px;
+        font-size: 0.73rem;
+        margin-top: 8px;
+        font-weight: 700;
+        border-radius: 22px;
+        box-shadow: 0 4px 12px rgba(199, 221, 88, 0.5);
+    }
+
+    .btn-carousel::after {
+        font-size: 1.1rem;
+        right: 15px;
+    }
+}
+
+/* ========== OCULTAR IMAGEN DE FONDO EN MÓVIL/TABLET ========== */
+
+@media (max-width: 992px) {
+    /* Ocultar la imagen de fondo */
+    .stats-bg {
+        display: none !important;
+    }
+    
+    /* Contenedor sin imagen */
+    .stats-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: auto;
+        padding: 80px 0 50px 0;
+        position: relative;
+        margin-top: 60px;
+    }
+    
+    /* Cards vuelven al flujo normal */
+    .stats-cards {
+        position: relative;
+        transform: none;
+        right: auto;
+        top: auto;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    /* Estilo moderno para las cards */
+    .stats-card {
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+        box-shadow: 0 8px 25px rgba(79, 127, 43, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .stats-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(79, 127, 43, 0.4);
+    }
+    
+    /* Números grandes */
+    .stats-card h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #c7dd58;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Títulos */
+    .stats-card h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Descripción */
+    .stats-card p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+        margin: 0;
+    }
+}
+
+/* Para móviles pequeños */
+@media (max-width: 576px) {
+    .stats-section {
+        padding: 80px 0 40px 0;
+        margin-top: 50px;
+    }
+    
+    .stats-cards {
+        padding: 0 15px;
+        gap: 18px;
+    }
+    
+    .stats-card {
+        padding: 25px;
+        max-width: 100%;
+    }
+    
+    .stats-card h2 {
+        font-size: 2.5rem;
+    }
+    
+    .stats-card h4 {
+        font-size: 14px;
+    }
+    
+    .stats-card p {
+        font-size: 13px;
+    }
+}
+
+
+
+
 
 /* ========== ESTILOS BOTONES DE IDIOMA - NAVBAR BOOTSTRAP ========== */
 /* ========== BOTONES DE IDIOMA ========== */
@@ -3239,7 +3556,7 @@ a {
     justify-content: center;
 }
 
-/* Iconos Font Awesome en las cards */
+/* Iconos Figma nuevos  en las cards */
 .card-icon-wrapper i {
     font-size: 70px;
     color: white;
@@ -3255,6 +3572,7 @@ a {
 .card-icon-wrapper img {
     width: 70px;
     height: 70px;
+    object-fit: contain;  /* ← AGREGA SOLO ESTA LÍNEA */
     filter: brightness(0) invert(1);
     transition: transform 0.3s ease;
 }
@@ -3645,9 +3963,7 @@ a {
 /* ========== FIN MEJORAS INICIO ========== */
 
 
-/* ========== JOIN SECTION MEJORADA ========== */
-
-/* ========== JOIN SECTION MEJORADA ========== */
+/* ========== JOIN SECTION ========== */
 
 .join-section {
     background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
@@ -3660,10 +3976,95 @@ a {
     text-align: center;
 }
 
+.join-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    line-height: 1.3;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 30px;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.join-section .btn-green {
+    background: white;
+    color: #4F7F2B;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+
+.join-section .btn-green:hover {
+    background: #c7dd58;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .join-section {
+        padding: 45px 70px;
+        width: 92%;
+    }
     .join-title {
-        font-size: 1.8rem;
+        font-size: 2.4rem;
+    }
+    .join-description {
+        font-size: 1rem;
     }
 }
+
+@media (max-width: 768px) {
+    .join-section {
+        padding: 40px 40px;
+        width: 95%;
+    }
+    .join-title {
+        font-size: 2rem;
+    }
+    .join-description {
+        font-size: 0.95rem;
+        max-width: 90%;
+    }
+    .join-section .btn-green {
+        padding: 14px 35px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .join-section {
+        padding: 35px 25px;
+        margin: 40px auto;
+    }
+    .join-title {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+    .join-description {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+}
+
 /*------------------------------------------PROGRAMAS 3 -----------------------------*/
 
 .impacto {
