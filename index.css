@@ -43,18 +43,19 @@
 
 /* Mejorar el blur box con glassmorphism */
 .carousel-blur-box {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.35); /* ← 35% opaco (muy claro) */
+    backdrop-filter: blur(25px); /* ← Blur máximo para compensar */
+    -webkit-backdrop-filter: blur(25px);
     border-radius: 15px;
     padding: 30px 60px;
-    border: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     max-width: 100%;
     width: 100%;
     margin: 0;
     pointer-events: none; 
 }
+
 
 /* Mejorar la legibilidad del texto */
 .carousel-blur-box h5 {
@@ -929,731 +930,1037 @@ body, html {
 }
 
 
- /* ------------------------------------ ACÁ COMIENZA CSS APP -------------------------------------- */
+ /* ========== ESTILOS MEJORADOS PÁGINA APP ========== */
 
-
-/* Variables de color */
-:root {
-    --color-green-dark: #38761d;
-    --color-green-light: #52b12f;
-    --color-text-dark: #333;
-    --color-text-light: #fff;
-    --color-background-light: #f4f4f4;
-    --color-footer-text: #666;
-    --color-section-bg: #fff;
-}
-
-/* Base / Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--color-text-dark);
-    line-height: 1.6;
-    background-color: var(--color-section-bg);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* --- HEADER MEJORADO --- */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.logo img {
-    height: 65px; /* ← AUMENTADO DE 40px A 65px */
-    transition: transform 0.4s ease;
-    filter: drop-shadow(0 2px 8px rgba(79, 127, 43, 0.2));
-}
-
-.logo:hover img {
-    transform: scale(1.1) rotate(3deg);
-    filter: drop-shadow(0 4px 12px rgba(79, 127, 43, 0.4));
-}
-
-.nav a {
-    margin-left: 25px;
-    font-weight: 600;
-    font-size: 16px; /* ← AUMENTADO DE 15px */
-    color: var(--color-text-dark);
-    padding: 8px 16px;
-    border-radius: 8px;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-/* Línea animada debajo */
-.nav a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #c7dd58, #4F7F2B);
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
-    border-radius: 2px;
-}
-
-.nav a:hover::before {
-    width: 80%;
-}
-
-.nav a:hover {
-    color: #4F7F2B;
-    background: rgba(199, 221, 88, 0.1);
-    transform: translateY(-2px);
-}
-
-.nav-active {
-    color: var(--color-green-dark) !important;
-    background: rgba(199, 221, 88, 0.15);
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-}
-
-
-
-.btn-company {
-    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
-    color: white;
-    padding: 10px 24px; /* ← AUMENTADO DE 8px 15px */
-    border-radius: 25px; /* ← AUMENTADO DE 5px */
-    font-size: 15px; /* ← AUMENTADO DE 14px */
-    font-weight: 700; /* ← AUMENTADO DE 600 */
-    border: none;
-    box-shadow: 0 4px 15px rgba(199, 221, 88, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.btn-company:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(199, 221, 88, 0.5);
-    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
-}
-
-
-/* ← AGREGA ESTO AQUÍ */
-
-/* BOTÓN BLOG EN NAVBAR */
-.btn-blog {
-    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
-    color: white;
-    padding: 10px 24px;
-    border-radius: 25px;
-    font-size: 15px;
-    font-weight: 700;
-    border: none;
-    box-shadow: 0 4px 15px rgba(199, 221, 88, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-blog:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 25px rgba(199, 221, 88, 0.5);
-    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
-    color: white;
-}
-
-.btn-blog:active {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 15px rgba(199, 221, 88, 0.4);
-}
-
-
-
-
-/* --- ESTILOS ESPECÍFICOS DE LA APP PAGE --- */
-
+/* --- CONTENIDO PRINCIPAL --- */
 .app-main-content {
-    padding: 30px 5%;
+    padding: 0;
+    max-width: 100%;
 }
 
+/* ========== 1. HERO SECTION MEJORADO ========== */
 .app-hero-section {
-    padding: 50px 0;
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .app-hero-container {
     display: flex;
-    gap: 50px;
+    gap: 80px;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
 }
 
+/* QR Container mejorado */
 .qr-container {
     flex-shrink: 0;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.qr-container:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(127, 176, 51, 0.2);
 }
 
 .qr-code-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 15px;
+}
+
+/* Texto del hero mejorado */
+.app-hero-text {
+    flex: 1;
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .app-hero-text h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #c7dd58;
-    margin-bottom: 15px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
     line-height: 1.2;
 }
 
 .app-hero-text p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
+    font-size: 1.15rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 400;
 }
 
+/* Botón principal mejorado */
 .btn-app-primary {
-    background-color: #c7dd58;
-    border-radius: 20px;
-    padding: 6px 18px;
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
     color: white;
-    font-weight: 600; 
+    border: none;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 6px 20px rgba(199, 221, 88, 0.35);
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
 
-/* --- Features Grid --- */
+.btn-app-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-app-primary:hover::before {
+    left: 100%;
+}
+
+.btn-app-primary:hover {
+    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(199, 221, 88, 0.5);
+    color: white;
+}
+
+/* ========== 2. FEATURES SECTION MEJORADA ========== */
 .app-features-section {
-    padding: 40px 0;
-    max-width: 1100px;
+    padding: 80px 5%;
+    max-width: 1400px;
     margin: 0 auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    margin-bottom: 80px;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 50px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
+    gap: 40px;
+    margin-bottom: 60px;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
+/* Feature items mejorados */
 .feature-item {
-    padding-right: 20px;
+    padding: 30px 25px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.feature-item h3 {
-    font-size: 1em;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.feature-item p {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.feature-icon {
-    font-size: 2em;
-    color: var(--color-green-light);
-    margin-bottom: 10px;
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(127, 176, 51, 0.2);
 }
 
 .feature-item hr {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    width: 50%;
-    border: none;
-    height: 3px;
-    background-color: var(--color-background-light);
+    display: none; /* Eliminar las líneas */
 }
 
-/* CTA Final Bottom */
+/* Iconos mejorados */
+.feature-icon {
+    font-size: 3rem;
+    color: #7FB033;
+    margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #e8f5d0 0%, #d4eab8 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
+    color: white;
+}
+
+.feature-item h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.3;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ========== 3. CTA BOTTOM MEJORADO ========== */
 .app-cta-bottom {
     text-align: center;
-    padding: 20px 0;
+    padding: 50px 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .app-cta-bottom p {
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    font-size: 1.1em;
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 400;
 }
 
+/* Botón secundario mejorado */
 .btn-app-secondary {
-    background-color: #c7dd58;
-    border-radius: 20px;
-    padding: 6px 18px;
+    background: linear-gradient(135deg, #7FB033 0%, #5A8C24 100%);
     color: white;
-    font-weight: 600; 
+    border: none;
+    padding: 16px 45px;
+    border-radius: 30px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 6px 20px rgba(127, 176, 51, 0.35);
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
 
-/* --- Media Queries --- */
-@media (max-width: 1024px) {
+.btn-app-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-app-secondary:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-app-secondary:hover {
+    background: linear-gradient(135deg, #4F7F2B 0%, #3A5E20 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(127, 176, 51, 0.5);
+    color: white;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1200px) {
+    .app-hero-container {
+        gap: 60px;
+    }
+    
+    .qr-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .app-hero-text h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .app-hero-section {
+        padding: 60px 5%;
+    }
+    
     .app-hero-container {
         flex-direction: column;
         text-align: center;
+        gap: 40px;
     }
+    
     .qr-container {
-        margin-bottom: 20px;
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
     }
+    
+    .app-hero-text h1 {
+        font-size: 2.8rem;
+    }
+    
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 30px;
+    }
+    
+    .app-features-section {
+        padding: 60px 5%;
+        margin-bottom: 60px;
     }
 }
 
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        padding: 15px 5%;
+    .app-hero-section {
+        padding: 50px 5%;
     }
-    .nav {
-        margin: 10px 0;
-    }
-    .nav a {
-        margin: 0 10px;
-    }
+    
     .app-hero-text h1 {
-        font-size: 2em;
+        font-size: 2.2rem;
     }
+    
+    .app-hero-text p {
+        font-size: 1rem;
+    }
+    
+    .qr-container {
+        width: 240px;
+        height: 240px;
+        padding: 25px;
+    }
+    
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
     }
+    
+    .app-features-section {
+        padding: 50px 30px;
+        border-radius: 20px;
+    }
+    
     .feature-item {
-        text-align: center;
-        padding-right: 0;
-        padding-bottom: 20px;
+        padding: 25px 20px;
     }
-    .feature-item hr {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
     }
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .footer-logo, .footer-nav, .social-links, .footer-info {
-        margin-bottom: 15px;
+    
+    .app-cta-bottom p {
+        font-size: 1rem;
     }
 }
 
-/* ----------------------------- CSS PARA LA PAGE CONTACTO ----------------------------- */
+@media (max-width: 576px) {
+    .app-hero-section {
+        padding: 40px 20px;
+    }
+    
+    .app-hero-text h1 {
+        font-size: 1.9rem;
+    }
+    
+    .app-hero-text p {
+        font-size: 0.95rem;
+    }
+    
+    .qr-container {
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+    }
+    
+    .btn-app-primary,
+    .btn-app-secondary {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px 30px;
+        font-size: 0.95rem;
+    }
+    
+    .app-features-section {
+        padding: 40px 20px;
+    }
+    
+    .feature-item h3 {
+        font-size: 1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+    
+    .app-cta-bottom {
+        padding: 40px 15px 0;
+    }
+}
+
+/* ========== FIN ESTILOS APP ========== */
+/* ========== ESTILOS FORMULARIO DONACIÓN - MEJORADO ========== */
 
 /* CONTENEDOR GENERAL */
 .contact-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 70px;
-    padding: 50px;
-}
-
-/* IMAGEN IZQUIERDA */
-.left-img img {
-    width: 350px;
-    height: 350px;
-    border-radius: 35px;
+    gap: 80px;
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 60px auto;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* Columna izquierda (título + imagen) */
 .left-side {
     display: flex;
     flex-direction: column;
-    gap: 90px; /* espacio entre título e imagen */
+    gap: 50px;
+    flex: 1;
+    max-width: 450px;
 }
 
 .title {
-    font-size: 30px;
+    font-size: 2.8rem;
     line-height: 1.3;
-    color: #7CC000;
-    font-weight: 600;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+/* IMAGEN IZQUIERDA */
+.left-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.left-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    transition: transform 0.5s ease;
+}
+
+.left-img:hover img {
+    transform: scale(1.05);
 }
 
 /* FORMULARIO */
 .contact-form {
-    width: 480px;
+    flex: 1;
+    max-width: 550px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 /* LABELS */
 .contact-form label {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: #333;
-    margin-bottom: -8px;
+    margin-bottom: -12px;
+    letter-spacing: 0.3px;
 }
 
-/* INPUTS / TEXTAREA */
+/* INPUTS / TEXTAREA / SELECT */
 .contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 10px 10px;
-    border-radius: 40px;
-    border: 2px solid #A88A57; 
-    background: #f4f4f4;       
-    font-size: 16px;
-    outline: none;
-}
-
-.contact-form textarea {
-    height: 150px;
-    border-radius: 25px;
-    resize: none;
-}
-
-/* SELECTS */
-
+.contact-form textarea,
 .contact-form select {
     width: 100%;
-    padding: 10px 12px;
-    border-radius: 40px;
-    border: 2px solid #A88A57;
-    background: #f4f4f4;
-    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+    background: #ffffff;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
     outline: none;
-    appearance: none;       
-    cursor: pointer;
-}
-
-.contact-form select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23A88A57' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 14px;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #85745B;  
-    opacity: 1;
+    transition: all 0.3s ease;
 }
 
 .contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #8A6E45; 
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: #7FB033;
+    box-shadow: 0 0 0 4px rgba(127, 176, 51, 0.1);
+    background: #ffffff;
 }
 
-/* BOTÓN */
+.contact-form input:hover,
+.contact-form textarea:hover,
+.contact-form select:hover {
+    border-color: #c7dd58;
+}
+
+/* TEXTAREA específico */
+.contact-form textarea {
+    height: 140px;
+    resize: vertical;
+    min-height: 100px;
+    max-height: 300px;
+}
+
+/* SELECT */
+.contact-form select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%237FB033' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 45px;
+}
+
+/* PLACEHOLDERS */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+/* MENSAJES DE ERROR */
+.error-msg {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: -15px;
+    display: none;
+    font-weight: 500;
+}
+
+.error-msg.show {
+    display: block;
+}
+
+/* BOTÓN ENVIAR */
 .submit-btn {
-    width: 200px;
-    padding: 14px 0;
+    width: 100%;
+    max-width: 250px;
+    padding: 16px 0;
     margin-top: 10px;
     border: none;
     border-radius: 30px;
-    background: #7CC000;
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
     color: white;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 6px 20px rgba(199, 221, 88, 0.35);
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.submit-btn:hover::before {
+    width: 400px;
+    height: 400px;
 }
 
 .submit-btn:hover {
-    background: #6AA400;
+    background: linear-gradient(135deg, #7FB033 0%, #5A8C24 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(127, 176, 51, 0.5);
 }
 
-.error-msg {
-    color: #d9534f;
-    font-size: 0.8rem;
-    margin-top: -5px;
-    margin-bottom: 8px;
+.submit-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(127, 176, 51, 0.4);
 }
 
-/* CURVA VERDE */
-.green-curve {
-    width: 100%;
-    background: #3f772c;
-    border-top-left-radius: 120px;
-    border-top-right-radius: 120px;
-    margin-top: 40px;
-    padding: 60px 40px;
+/* Estados de validación */
+.contact-form input:invalid:not(:placeholder-shown),
+.contact-form textarea:invalid:not(:placeholder-shown),
+.contact-form select:invalid:not(:placeholder-shown) {
+    border-color: #f44336;
 }
 
-/* OFICINAS */
-.offices {
-    display: flex;
-    justify-content: space-around;
-    color: white;
+.contact-form input:valid,
+.contact-form textarea:valid,
+.contact-form select:valid {
+    border-color: #e0e0e0;
 }
 
-.office h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
-}
+/* RESPONSIVE */
 
-.office p {
-    margin: 4px 0;
-    font-size: 14px;
+@media (max-width: 1024px) {
+    .contact-container {
+        gap: 60px;
+        padding: 60px 5%;
+    }
+    
+    .title {
+        font-size: 2.4rem;
+    }
 }
 
 @media (max-width: 768px) {
     .contact-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-    gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 30px;
+        gap: 40px;
     }
-
+    
     .left-side {
-    align-items: center;
-    text-align: center;
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
     }
-
+    
     .left-img {
-    display: none;
+        display: none; /* Ocultar imagen en móvil */
     }
-
+    
     .contact-form {
+<<<<<<< HEAD
+        width: 100%;
+        max-width: 500px;
+=======
     max-width: 90%;
     margin: 0 auto;
+>>>>>>> 2f21ed0e01e382174b5cb74b02e3180ba06f1754
     }
-
+    
     .title {
-    font-size: 24px;
+        font-size: 2rem;
     }
-
+    
     .submit-btn {
-    margin: 20px auto 0;
-    display: block;
-    }
-
-    .offices {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
-    }
-
-    .office {
-    max-width: 320px;
-    }
-
-    .green-curve {
-    padding: 40px 20px;
+        width: 100%;
+        max-width: 100%;
+        align-self: center;
     }
 }
 
-@media (max-width: 1024px) {
-    .left-img{
-        display: none;
+@media (max-width: 576px) {
+    .contact-container {
+        padding: 40px 20px;
+        border-radius: 20px;
     }
-
+    
+    .title {
+        font-size: 1.8rem;
     }
-
-/* -------------------- ---------CSS PARA DONA ------------------------------------- */
-
-/* Variables de color */
-:root {
-    --color-green-dark: #38761d;
-    --color-green-light: #52b12f;
-    --color-green-highlight: #a2b12f; /* Verde amarillento para los fondos de tarjetas y botones */
-    --color-text-dark: #333;
-    --color-text-light: #fff;
-    --color-background-light: #f4f4f4; /* Fondo del body */
-    --color-footer-text: #666;
-    --color-title-green: #38761d;
+    
+    .contact-form {
+        gap: 18px;
+    }
+    
+    .contact-form label {
+        font-size: 0.9rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+    
+    .submit-btn {
+        padding: 14px 0;
+        font-size: 1rem;
+    }
 }
 
-/* Base / Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* ========== FIN ESTILOS FORMULARIO ========== */
+/* ========== ESTILOS PÁGINA DE DONACIÓN - MEJORADOS ========== */
 
-body {
-    font-family: 'Poppins', sans-serif;
-    color: var(--color-text-dark);
-    line-height: 1.6;
-    background-color: var(--color-background-light);
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-
-
-/* --- CONTENIDO PRINCIPAL --- */
-
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 5%;
-}
-
-/* --- SECCIÓN 1: HERO/BANNER --- */
+/* ========== 1. HERO SECTION MEJORADO ========== */
 
 .hero-section {
     display: flex;
-    gap: 40px;
+    gap: 60px;
     align-items: center;
-    padding: 30px 0;
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-text {
     flex: 1;
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero-text h2 {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #c7dd58;
-    margin-bottom: 15px;
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    line-height: 1.2;
 }
 
 .hero-text p {
-    font-size: 1em;
+    font-size: 1.15rem;
     color: #666;
-    margin-bottom: 20px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 400;
 }
 
+/* Botón hero mejorado */
 .btn-donate-link {
-    background: #d9f0c2;
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
     color: white;
     border: none;
-    padding: 12px 28px;
+    padding: 16px 40px;
     border-radius: 30px;
     font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 6px 20px rgba(199, 221, 88, 0.35);
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-donate-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-donate-link:hover::before {
+    left: 100%;
 }
 
 .btn-donate-link:hover {
-    background-color: var(--color-green-dark);
+    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(199, 221, 88, 0.5);
+    color: white;
 }
 
+.btn-donate-link:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(199, 221, 88, 0.4);
+}
+
+/* Imagen hero mejorada */
 .hero-image-container {
     flex-shrink: 0;
-    width: 400px; /* Ancho fijo para la imagen */
-    height: 300px;
-    border-radius: 10px;
+    width: 450px;
+    height: 400px;
+    border-radius: 25px;
     overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(127, 176, 51, 0.1) 0%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-/* --- SECCIÓN 2: DONACIONES (TARJETAS) --- */
+.hero-image-container:hover .hero-image {
+    transform: scale(1.08);
+}
+
+/* ========== 2. TÍTULO "PARA QUÉ SIRVEN" ========== */
+
+.hero-section .hero-text h2:not(:first-child) {
+    margin-top: 80px;
+    text-align: center;
+}
+
+/* ========== 3. CARDS PERSONALIZADAS MEJORADAS ========== */
 
 .cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    padding: 2rem 0;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 50px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .card-custom {
-    background-image: linear-gradient(#5fad2b, #1e580f);
-    border-radius: 20px;
-    padding: 1.5rem;
-    width: 300px;
+    background: linear-gradient(180deg, #A8D14F 0%, #7FB033 100%);
+    border-radius: 25px;
+    padding: 0;
+    width: 320px;
     color: white;
     text-align: left;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease;
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 450px;
+    box-shadow: 0 10px 30px rgba(79, 127, 43, 0.25);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-custom::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    transition: transform 0.6s ease;
+}
+
+.card-custom:hover::before {
+    transform: translate(-25%, -25%);
 }
 
 .card-custom:hover {
-    transform: translateY(-5px);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(79, 127, 43, 0.4);
 }
 
 .card-custom img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 25px 25px 0 0;
+    margin-bottom: 0;
+    transition: transform 0.4s ease;
+}
+
+.card-custom:hover img {
+    transform: scale(1.05) rotate(2deg);
 }
 
 .card-custom h4 {
-    margin-top: 1rem;
+    margin: 20px 25px 15px;
     font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.3;
 }
 
 .card-custom p {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.95;
+    margin: 0 25px 25px;
+    flex-grow: 1;
 }
 
-.card {
-    height: 300px;
-}
-
-/* --- SECCIÓN 3: IMPACTO (TARJETAS) --- */
+/* ========== 4. GRID DE IMPACTO MEJORADO ========== */
 
 .impacto-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin: 25px 0;
+    gap: 20px;
+    margin: 50px auto;
+    padding: 0 5%;
+    max-width: 1400px;
 }
 
 .card-impacto-3 {
-    height: 200px;
-    border-radius: 16px;
-    padding: 16px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 30px;
     color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* texto arriba */
+    justify-content: flex-start;
     background-size: cover;
     background-position: center;
     position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-impacto-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(79, 127, 43, 0.3) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+    transition: opacity 0.4s ease;
+}
+
+.card-impacto-3:hover::before {
+    opacity: 0.7;
+}
+
+.card-impacto-3:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .card-impacto-3 h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0 0 6px 0;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
     line-height: 1.2;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
 }
 
 .card-impacto-3 p {
-    font-size: 14px;
+    font-size: 1rem;
     margin: 0;
-    font-weight: 400;
-    line-height: 1.25;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    font-weight: 500;
+    line-height: 1.4;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .impacto-grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* ========== 5. SECCIÓN TÍTULO "FORMAS DE DONAR" ========== */
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin: 60px 0 40px;
 }
 
+<<<<<<< HEAD
+/* ========== 6. CARDS GRANDES DE DONACIÓN ========== */
+=======
 @media (max-width: 600px) {
     .impacto-grid-3 {
         grid-template-columns: 1fr;
@@ -1673,102 +1980,259 @@ main {
 
 
 /* --- SECCIÓN 4: FORMAS DE DONAR (Tarjetas grandes) --- */
+>>>>>>> 2f21ed0e01e382174b5cb74b02e3180ba06f1754
 
 .cards-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-    margin-bottom: 50px;
+    gap: 40px;
+    margin: 0 auto 80px;
+    padding: 0 5%;
+    max-width: 1400px;
 }
 
 .donation-type-card {
-    background-image: linear-gradient(#c7dd58, #e7f3e4);;
-    color: var(--color-text-light);
-    padding: 40px;
-    border-radius: 15px;
+    background: linear-gradient(135deg, #e8f5d0 0%, #d4eab8 100%);
+    color: #333;
+    padding: 50px 40px;
+    border-radius: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    min-height: 280px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-type-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(127, 176, 51, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.donation-type-card:hover::before {
+    opacity: 1;
+}
+
+.donation-type-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(127, 176, 51, 0.25);
 }
 
 .donation-type-card h2 {
-    font-size: 2em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.1;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #7FB033 0%, #4F7F2B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .donation-type-card p {
-    font-size: 1.1em;
-    font-weight: 400;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #555;
     margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .btn-donate-footer {
-    background-color: #c7dd58;
-    border-radius: 20px;
-    padding: 6px 18px;
+    background: linear-gradient(135deg, #7FB033 0%, #5A8C24 100%);
     color: white;
-    font-weight: 600; 
-    width: 140px;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 15px rgba(127, 176, 51, 0.4);
+    align-self: flex-start;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
 
+.btn-donate-footer::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-donate-footer:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-donate-footer:hover {
-    background-color: var(--color-green-dark);
+    background: linear-gradient(135deg, #4F7F2B 0%, #3A5E20 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(79, 127, 43, 0.6);
+    color: white;
 }
 
+/* ========== RESPONSIVE ========== */
 
-/* --- Media Queries (Responsivo) --- */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+    .hero-section {
+        gap: 40px;
+        padding: 60px 5%;
+    }
+    
+    .hero-image-container {
+        width: 400px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 992px) {
     .hero-section {
         flex-direction: column-reverse;
         text-align: center;
+        padding: 50px 5%;
     }
+    
     .hero-image-container {
         width: 100%;
-        height: 250px;
+        max-width: 500px;
+        height: 350px;
+        display: none;
     }
-    .cards-grid-3, .cards-grid-3-impact {
-        grid-template-columns: 1fr;
+    
+    .hero-text h2 {
+        font-size: 2.8rem;
     }
+
+    .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+    
+    .impacto-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .cards-grid-2 {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+}
+
+/*Tablets - 2 columnas con tercera card centrada */
+@media (min-width: 769px) and (max-width: 992px) {
+    .impacto-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Centrar la tercera card */
+    .card-impacto-3:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .hero-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .cards-container {
+    grid-template-columns: 1fr;
+}
+    
+    .impacto-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card-impacto-3 {
+        height: 200px;
+        padding: 25px;
+    }
+    
+    .card-impacto-3 h3 {
+        font-size: 1.6rem;
+    }
+    
     .donation-type-card {
-        min-height: 200px;
-        padding: 30px;
+        padding: 40px 30px;
+        min-height: 250px;
         text-align: center;
     }
+    
+    .donation-type-card h2 {
+        font-size: 2rem;
+    }
+    
     .btn-donate-footer {
         align-self: center;
     }
 }
 
-@media (max-width: 768px) {
-    .header {
-        flex-wrap: wrap;
-        justify-content: center;
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 40px 20px;
     }
-    .nav {
-        flex-basis: 100%;
-        margin: 10px 0;
+    
+    .hero-text h2 {
+        font-size: 1.9rem;
     }
-    .nav a {
-        margin: 0 8px;
+    
+    .hero-image-container {
+        height: 280px;
     }
-    .header-actions {
+    
+    .cards-container {
+        padding: 40px 20px;
+    }
+    
+    .card-custom {
         width: 100%;
-        justify-content: center;
-        margin-top: 10px;
+        max-width: 350px;
     }
-    .hero-text h1, .section-title {
-        font-size: 1.8em;
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .donation-type-card h2 {
+        font-size: 1.8rem;
+    }
+    
+    .donation-type-card p {
+        font-size: 1rem;
     }
 }
+
+/* ========== FIN ESTILOS DONACIÓN ========== */
 
 /* ------------------------------- CSS PARA PROGRAMAS ----------------------------------- */
 
@@ -3608,12 +4072,53 @@ a {
     filter: drop-shadow(0 5px 20px rgba(79, 127, 43, 0.6));
 }
 
+/*BOTÓN BLOG EN NAVBAR */
+.btn-blog,
+button.btn-blog,
+a button.btn-blog {
+    background: linear-gradient(135deg, #c7dd58 0%, #b5ca45 100%);
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 15px rgba(199, 221, 88, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-blog:hover,
+button.btn-blog:hover,
+a button.btn-blog:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(199, 221, 88, 0.5);
+    background: linear-gradient(135deg, #b5ca45 0%, #c7dd58 100%);
+    color: white !important;
+}
+
+.btn-blog:active,
+button.btn-blog:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(199, 221, 88, 0.4);
+}
+
+.btn-blog:focus,
+button.btn-blog:focus {
+    outline: none;
+}
 
 /* Links del navbar con línea animada */
 .navbar .nav-link {
     position: relative;
     transition: all 0.3s ease;
 }
+
+
+
+
 
 .navbar .nav-link::after {
     content: '';
